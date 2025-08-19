@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Rápido de TI - Techcomp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="max-width: 800px; width: 100%; padding-top: 10px; padding-bottom: 10px; background-color: #3a6185; background-image: linear-gradient(to right, #21234f, #318695); text-align: center;">
+            <img src="https://i.postimg.cc/vBwH7FMm/image-psd.png" width="100" style="height: auto;" />
+        </div>
+    </div>
+    <div class="container">
+        
+        <h1>Diagnóstico Rápido de Segurança</h1>
+        <form id="formulario">
+            
+            <fieldset>
+                <legend> 1. Hoje, como o condomínio costuma identificar tentativas de acesso de pessoas não autorizadas?</legend>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta1" value="A" required>Temos portaria e sistemas de controle que alertam imediatamente.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta1" value="B">Temos porteiro ou câmeras, mas nem sempre detectamos em tempo real.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta1" value="C">Normalmente só percebemos após a entrada indevida ter acontecido.
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend> 2. O controle de entrada e saída de moradores, visitantes e prestadores é…</legend>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta2" value="A" required>Eletrônico e integrado, com registro em tempo real.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta2" value="B">Parcialmente automatizado, mas nem sempre confiável.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta2" value="C">Manual, por livro de registro ou comunicação verbal.
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend> 3. O condomínio conta hoje com monitoramento por câmeras e proteção do perímetro?</legend>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta3" value="A" required>Sim, temos CFTV ativo e segurança perimetral monitorada 24h.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta3" value="B">Temos equipamentos, mas sem manutenção regular ou com falhas.
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="pergunta3" value="C">Não contamos com esse tipo de proteção.
+                </label>
+            </fieldset>
+
+            <div class="button-container">
+                
+                <button type="submit" id="gerar-btn">Gerar Diagnóstico de Segurança</button>
+                <button type="button" id="pdf-btn" style="display: none;">Salvar Diagnóstico em PDF</button>
+            </div>
+        </form>
+        <div id="diagnostico">
+            </div>
+    </div>
+
+    <div id="modal-overlay">
+    <div id="modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <div class="modal-header">
+            <h2>Diagnóstico Rápido Segcomp</h2>
+        </div>
+        <p>Para ver sua análise completa, por favor, preencha os campos abaixo. É rapidinho!</p>
+        <form id="lead-form">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
+             <div class="form-group">
+                <label for="empresa">Condomínio:</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Seu Melhor E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@empresa.com" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp:</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required maxlength="15">
+            </div>
+            <input type="hidden" name="origem" value="segcomp">
+            <button type="submit" id="finalizar-btn">Ver meu Diagnóstico Agora</button>
+        </form>
+    </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+<script>
+    let headerBase64 = null;
+    const img = new Image();
+    img.src = 'header.png';
+    img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        headerBase64 = canvas.toDataURL('image/png');
+    };
+</script>
+
+
+</html>

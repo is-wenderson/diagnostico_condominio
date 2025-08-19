@@ -1,0 +1,402 @@
+/* === ESTILOS GERAIS === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 0;
+    background-color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    color: #1e3a8a;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2em; /* Tamanho de fonte mais consistente */
+}
+
+fieldset {
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #334155;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.radio-option {
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: background-color 0.2s;
+}
+
+.radio-option:hover {
+    background-color: #f1f5f9;
+}
+
+.radio-option input {
+    margin-right: 12px;
+    transform: scale(1.1);
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 5px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#pdf-btn {
+    background-color: #166534;
+}
+
+#diagnostico {
+    display: none;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 8px;
+    border: 2px solid #1e3a8a;
+}
+
+#diagnostico h2 {
+    color: #1e3a8a;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#diagnostico-geral {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.critico {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.intermediario {
+    background-color: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+}
+
+.saudavel {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.pilar-resultado h3 {
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 5px;
+    color: #1e3a8a;
+    font-size: 1.2em;
+}
+
+#recomendacao-final {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e0e7ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#recomendacao-final h3 {
+    color: #1e3a8a;
+    margin-top: 0;
+}
+
+.beneficios-lista {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.beneficios-lista li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.cta-whatsapp {
+    display: inline-block;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.fechamento {
+    font-style: italic;
+    color: #475569;
+}
+
+/* ================================================= */
+/* ===== ESTILOS DO MODAL ===== */
+/* ================================================= */
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#modal-overlay.visivel {
+    display: flex;
+    opacity: 1;
+}
+
+#modal-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 95%;
+    position: relative;
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out;
+}
+
+#modal-overlay.visivel #modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 20px;
+}
+
+#modal-content h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#modal-content p {
+    padding: 0 30px;
+    margin-top: 20px;
+    color: #475569;
+    font-size: 1.1em;
+}
+
+#lead-form {
+    padding: 20px 30px 30px 30px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+#lead-form .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+#lead-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.95em;
+}
+
+#lead-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#lead-form input:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+}
+
+#finalizar-btn {
+    width: 100%;
+    padding: 14px 25px;
+    font-size: 1.1em;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#finalizar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.2);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
+
+    .radio-option {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #diagnostico {
+        padding: 20px;
+    }
+
+    #diagnostico h2 {
+        font-size: 1.4em;
+    }
+
+    .beneficios-lista li {
+        font-size: 1em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .cta-whatsapp {
+        font-size: 1em;
+        padding: 10px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    legend {
+        font-size: 1em;
+    }
+
+    .radio-option input {
+        transform: scale(1);
+        margin-right: 8px;
+    }
+
+    #modal-content {
+        width: 95%;
+    }
+
+    #modal-content p {
+        padding: 0 20px;
+    }
+
+    #lead-form {
+        padding: 15px 20px 20px 20px;
+    }
+
+    #lead-form input {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    #finalizar-btn {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
