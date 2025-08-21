@@ -59,7 +59,7 @@ function configurarDiagnostico(textos) {
 
     leadForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const urlDoScript = "https://script.google.com/macros/s/AKfycbwow-Q-byAPgoixbNzp2sQwzNaTxrGmCQr127tsnz0qxR77FXF8em3BlnhQdqzARzUC/exec";
+        const urlDoScript = "https://script.google.com/macros/s/AKfycbzlJlq3N-kBiQNc_YwBdnfsW1KMi91UXGuq06xAI5dLty6C43FBZDrLSxO4elXP3d9DGw/exec";
         const submitButton = e.target.querySelector('button[type="submit"]');
         const formData = new FormData(leadForm);
 
