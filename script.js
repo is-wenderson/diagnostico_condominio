@@ -59,7 +59,7 @@ function configurarDiagnostico(textos) {
 
     leadForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const urlDoScript = "https://script.google.com/macros/s/AKfycbzlJlq3N-kBiQNc_YwBdnfsW1KMi91UXGuq06xAI5dLty6C43FBZDrLSxO4elXP3d9DGw/exec";
+        const urlDoScript = "https://script.google.com/macros/s/AKfycbz2GfaRJoRnjjK5Dvr5qNNTCZdVmQ9RQcDbzbxLQ8eYejfJy5Wbbpvyn0B475-T_TibSg/exec";
         const submitButton = e.target.querySelector('button[type="submit"]');
         const formData = new FormData(leadForm);
 
@@ -199,7 +199,7 @@ function continuarGeracao(doc, yStart, pageWidth, pageHeight, margin, diagnostic
         doc.setFont('helvetica', 'italic');
         doc.setTextColor(128);
         doc.line(margin, pageHeight - 18, pageWidth - margin, pageHeight - 18);
-        doc.text("Relatório gerado pela Techcomp, uma empresa do Grupo Ecomp.", margin, pageHeight - 10);
+        doc.text("Relatório gerado pela Segcomp, uma empresa do Grupo Ecomp.", margin, pageHeight - 10);
         doc.text(`Página 1 de 1`, pageWidth - margin, pageHeight - 10, { align: 'right' });
     };
 
@@ -207,7 +207,7 @@ function continuarGeracao(doc, yStart, pageWidth, pageHeight, margin, diagnostic
     doc.setFontSize(20);
     doc.setFont("helvetica", "bold");
     doc.setTextColor("#1e3a8a");
-    doc.text("Diagnóstico de Infraestrutura de TI", pageWidth / 2, y, { align: 'center' });
+    doc.text("Diagnóstico de Segurança", pageWidth / 2, y, { align: 'center' });
     y += 10;
 
     // Empresa
